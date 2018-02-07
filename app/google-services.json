@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "834416845475",
+    "firebase_url": "https://farmkart-1.firebaseio.com",
+    "project_id": "farmkart-1",
+    "storage_bucket": "farmkart-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834416845475:android:83da82bfe06a6e96",
+        "android_client_info": {
+          "package_name": "com.farmkart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834416845475-vupdoj455s7991sbbe361ooof2k0dsqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.farmkart",
+            "certificate_hash": "0a313414a0636ccb0ea3f9bf61c529260d11dfa5"
+          }
+        },
+        {
+          "client_id": "834416845475-reo9nlgjqcv91kl17e3p8mnep8cc1cd1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs_YIQIOv5qQv8MFltF7jthY5Ojrv8ju0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834416845475-reo9nlgjqcv91kl17e3p8mnep8cc1cd1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
