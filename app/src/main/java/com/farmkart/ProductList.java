@@ -74,7 +74,9 @@ public class ProductList extends AppCompatActivity {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(ProductList.this, ""+clickItem.getName(), Toast.LENGTH_SHORT).show();
+                        Intent productDetail = new Intent(ProductList.this, ProductDetail.class);
+                        productDetail.putExtra("productId", adapter.getRef(position).getKey());
+                        startActivity(productDetail);
                     }
                 });
             }
