@@ -5,10 +5,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.farmkart.Database.Database;
+import com.farmkart.models.Order;
 import com.farmkart.models.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +37,8 @@ public class ProductDetail extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference products;
 
+    Product currentProduct;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +51,21 @@ public class ProductDetail extends AppCompatActivity {
         //Init View
         numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
         btnCart = (FloatingActionButton) findViewById(R.id.btnCart);
+
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Database(getBaseContext()).addToCart(new Order(
+                        productId,
+                        currentProduct.getName(),
+                        numberButton.getNumber(),
+                        currentProduct.getPrice(),
+                        currentProduct.getDiscount()
+                ));
+
+                Toast.makeText(ProductDetail.this, "Item added to cart", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         product_name = (TextView) findViewById(R.id.product_name);
         product_price = (TextView) findViewById(R.id.product_price);
@@ -69,14 +90,14 @@ public class ProductDetail extends AppCompatActivity {
         products.child(productId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Product product = dataSnapshot.getValue(Product.class);
+                currentProduct = dataSnapshot.getValue(Product.class);
 
-                Picasso.with(getBaseContext()).load(product.getImage())
+                Picasso.with(getBaseContext()).load(currentProduct.getImage())
                         .into(product_image);
-                collapsingToolbarLayout.setTitle(product.getName() );
-                product_price.setText(product.getPrice());
-                product_name.setText(product.getName());
-                product_description.setText(product.getDescription());
+                collapsingToolbarLayout.setTitle(currentProduct.getName() );
+                product_price.setText(currentProduct.getPrice());
+                product_name.setText(currentProduct.getName());
+                product_description.setText(currentProduct.getDescription());
 
             }
 

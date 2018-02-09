@@ -10,13 +10,24 @@ public class User {
 
     private String Password;
 
+    private String Phone;
+
     public User(){
 
     }
 
-    public User(String Name, String Password){
+    public User(String Name, String Password, String Phone){
         this.Name = Name;
         this.Password = Password;
+        this.Phone = Phone;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
     public String getName() {
