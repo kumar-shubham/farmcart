@@ -144,7 +144,7 @@ public class ProductList extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         Intent productDetail = new Intent(ProductList.this, ProductDetail.class);
-                        productDetail.putExtra("productId", adapter.getRef(position).getKey());
+                        productDetail.putExtra("productId", searchAdapter.getRef(position).getKey());
                         startActivity(productDetail);
                     }
                 });
